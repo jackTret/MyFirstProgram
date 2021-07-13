@@ -12,6 +12,6 @@ public class Distance {
     System.out.println("Расстояние между точками " + p1 + " и " + p2 + " = " + distance2);
   }
   public static double distance(Point p1, Point p2) {
-    return Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y-p2.y) *(p1.y-p2.y));
+    return Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y-p2.y) * (p1.y-p2.y));
   }
 }

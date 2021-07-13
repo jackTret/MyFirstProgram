@@ -10,13 +10,12 @@ public class Point {
     this.y = y;
   }
 
-
   public double distance(Point p) {
-    return Math.sqrt((x - p.x) * (x - p.x) + (y-p.y) *(y-p.y));
+    return Math.sqrt((x - p.x) * (x - p.x) + (y-p.y) * (y-p.y));
   }
-  //public static double distance2(Point p1, Point p2) {
-  //  return Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y-p2.y) *(p1.y-p2.y));
-  //}
+  /* public static double distance2(Point p1, Point p2) {
+   return Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y-p2.y) *(p1.y-p2.y));
+  }*/
 
   @Override
   public String toString() {
