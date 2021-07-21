@@ -32,7 +32,7 @@ public class testContactCreation {
   @Test
   public void testContactCreationTests() throws Exception {
     clickPageAddNew();
-    fillContactForms(new ContactData("Petr", "Pavlovich", "Ledovskiy", "Petrucho", "Hot", "+79075642331", "petrucho@gmail.com"));
+    fillContactForms(new ContactData("Владимир", "Иванович", "Згарданов", "Zgardan", "NightClub", "+79057312337", "Zgardanych777@gmail.com"));
     checkCreatedGroup("test1");
     watchChoiceInContactForm();
 
