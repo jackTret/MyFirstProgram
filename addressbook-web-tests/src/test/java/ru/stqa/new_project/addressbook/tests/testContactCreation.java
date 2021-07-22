@@ -1,4 +1,4 @@
-package ru.stqa.new_project.addressbook;
+package ru.stqa.new_project.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 
@@ -6,6 +6,7 @@ import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import ru.stqa.new_project.addressbook.model.ContactData;
 
 public class testContactCreation {
   private WebDriver wb;
