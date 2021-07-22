@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.new_project.addressbook.model.ContactData;
 
-public class testContactCreation {
+public class ContactCreationTest {
   private WebDriver wb;
 
   @BeforeMethod(alwaysRun = true)

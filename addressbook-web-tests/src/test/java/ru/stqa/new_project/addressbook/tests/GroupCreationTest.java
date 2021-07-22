@@ -3,7 +3,7 @@ package ru.stqa.new_project.addressbook.tests;
 import org.testng.annotations.*;
 import ru.stqa.new_project.addressbook.model.GroupData;
 
-public class testGroupCreation extends TestBase {
+public class GroupCreationTest extends TestBase {
 
   @Test
   public void testGroupCreation() throws Exception {
