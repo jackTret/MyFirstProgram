@@ -5,42 +5,34 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.new_project.addressbook.model.ContactData;
 
-public class ContactHelper {
+public class ContactHelper extends BaseHelper {
 
-  protected WebDriver wb;
+
+  public ContactHelper(WebDriver wd) {
+    super(wd);
+  }
 
   public void watchChoiceInContactForm() {
-    wb.findElement(By.name("new_group")).click();
-    wb.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    click(By.name("new_group"));
+    click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
   public void checkCreatedGroup(String groupname) {
-    new Select(wb.findElement(By.name("new_group"))).selectByVisibleText(groupname);
+    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupname);
   }
 
   public void fillContactForms(ContactData contactData) {
-    wb.findElement(By.name("firstname")).click();
-    wb.findElement(By.name("firstname")).clear();
-    wb.findElement(By.name("firstname")).sendKeys(contactData.getName());
-    wb.findElement(By.name("middlename")).clear();
-    wb.findElement(By.name("middlename")).sendKeys(contactData.getMidname());
-    wb.findElement(By.name("lastname")).clear();
-    wb.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-    wb.findElement(By.name("nickname")).clear();
-    wb.findElement(By.name("nickname")).sendKeys(contactData.getNick());
-    wb.findElement(By.name("company")).click();
-    wb.findElement(By.name("company")).clear();
-    wb.findElement(By.name("company")).sendKeys(contactData.getCompanyname());
-    wb.findElement(By.name("mobile")).click();
-    wb.findElement(By.name("mobile")).clear();
-    wb.findElement(By.name("mobile")).sendKeys(contactData.getMobphone());
-    wb.findElement(By.name("email")).click();
-    wb.findElement(By.name("email")).clear();
-    wb.findElement(By.name("email")).sendKeys(contactData.getE_mail());
-    wb.findElement(By.name("new_group")).click();
+    type(By.name("firstname"), contactData.getName());
+    typeOtherFields(By.name("middlename"), contactData.getMidname());
+    typeOtherFields(By.name("lastname"), contactData.getLastname());
+    typeOtherFields(By.name("nickname"), contactData.getNick());
+    type(By.name("company"), contactData.getCompanyname());
+    type(By.name("mobile"), contactData.getMobphone());
+    type(By.name("email"), contactData.getE_mail());
+    click(By.name("new_group"));
   }
 
   public void clickPageAddNew() {
-    wb.findElement(By.linkText("add new")).click();
+    click(By.linkText("add new"));
   }
 }
