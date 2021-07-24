@@ -2,7 +2,6 @@ package ru.stqa.new_project.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.stqa.new_project.addressbook.model.GroupData;
 
 public class GroupHelper extends BaseHelper {
 

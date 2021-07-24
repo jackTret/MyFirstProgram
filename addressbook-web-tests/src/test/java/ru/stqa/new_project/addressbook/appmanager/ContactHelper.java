@@ -13,7 +13,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void watchChoiceInContactForm() {
-    click(By.name("new_group"));
+    //click(By.name("new_group"));
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
@@ -34,5 +34,34 @@ public class ContactHelper extends BaseHelper {
 
   public void clickPageAddNew() {
     click(By.linkText("add new"));
+  }
+
+  public void clickEditContact() {
+    //click(By.xpath("//*[@href='edit.php?id=14']"));
+    click(By.xpath("//tr[13]/td[8]/a/img"));
+    //click(By.xpath("//*[text()='Edit']"));
+  }
+
+  //public void checkContact() {
+   // click(By.xpath("//div[@id='content']/form/input[22]"));
+ // }
+  public void clickUpdateContact() {
+    //click(By.name("Update"));
+    //click(By.xpath("//div[@id='content']//form/input[contains(@,Update)]"));
+    //click(By.xpath("Update"));
+    click(By.xpath("//input[@name='update']"));
+    //click(By.xpath("//form multipart/form-data'[./input[@name='Update']"));
+  }
+
+  public void returnToHomePage() {
+    click(By.linkText("home page"));
+  }
+
+  public void checkToDeleteContact() {
+    click(By.xpath("//input[contains(@input type,'checkbox')]"));
+  }
+
+  public void pushDeleteContact() {
+    wd.switchTo().alert().accept();
   }
 }
