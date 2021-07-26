@@ -13,8 +13,8 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void watchChoiceInContactForm() {
-    //click(By.name("new_group"));
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+    click(By.name("new_group"));
+    //click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
   public void checkCreatedGroup(String groupname) {
@@ -29,7 +29,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("company"), contactData.getCompanyname());
     type(By.name("mobile"), contactData.getMobphone());
     type(By.name("email"), contactData.getE_mail());
-    click(By.name("new_group"));
+    //click(By.name("new_group"));
   }
 
   public void clickPageAddNew() {
@@ -37,19 +37,19 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void clickEditContact() {
-    //click(By.xpath("//*[@href='edit.php?id=14']"));
-    click(By.xpath("//tr[13]/td[8]/a/img"));
+    //click(By.xpath("//*[@href='edit.php?id=3']"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     //click(By.xpath("//*[text()='Edit']"));
   }
 
   //public void checkContact() {
-   // click(By.xpath("//div[@id='content']/form/input[22]"));
- // }
+  //  click(By.xpath("//div[@id='content']/form/input[3]"));
+  //}
   public void clickUpdateContact() {
     //click(By.name("Update"));
     //click(By.xpath("//div[@id='content']//form/input[contains(@,Update)]"));
-    //click(By.xpath("Update"));
-    click(By.xpath("//input[@name='update']"));
+    click(By.xpath("//div[4]/form/input[@value='Update']"));
+    //click(By.xpath("//input[@name='update']"));
     //click(By.xpath("//form multipart/form-data'[./input[@name='Update']"));
   }
 
@@ -58,10 +58,15 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void checkToDeleteContact() {
-    click(By.xpath("//input[contains(@input type,'checkbox')]"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
   }
 
   public void pushDeleteContact() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+
+  }
+  
+  public void closeAlert() {
     wd.switchTo().alert().accept();
   }
 }
