@@ -65,7 +65,7 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
 
   }
-  
+
   public void closeAlert() {
     wd.switchTo().alert().accept();
   }
