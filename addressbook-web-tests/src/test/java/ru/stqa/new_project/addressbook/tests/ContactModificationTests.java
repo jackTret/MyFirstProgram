@@ -10,7 +10,7 @@ public class ContactModificationTests extends TestBase {
     app.contactHelper.clickEditContact();
     //app.contactHelper.watchChoiceInContactForm();
     //app.contactHelper.checkContact();
-    app.contactHelper.fillContactForms(new ContactData("Vladimir", "Ivanovich", "Zgardanov", "Zgardan", "NightClub", "+79057312337", "Zgardanych777@gmail.com"));
+    app.contactHelper.fillContactForms(new ContactData("Vladimir", "Ivanovich", "Zgardanov", "Zgardan", "NightClub", "+79057312337", "Zgardanych777@gmail.com", null), false);
     app.contactHelper.clickUpdateContact();
     app.contactHelper.returnToHomePage();
   }

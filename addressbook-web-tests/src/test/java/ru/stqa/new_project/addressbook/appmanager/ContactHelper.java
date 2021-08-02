@@ -3,6 +3,7 @@ package ru.stqa.new_project.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.new_project.addressbook.model.ContactData;
 
 public class ContactHelper extends BaseHelper {
@@ -21,7 +22,7 @@ public class ContactHelper extends BaseHelper {
     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupname);
   }
 
-  public void fillContactForms(ContactData contactData) {
+  public void fillContactForms(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getName());
     typeOtherFields(By.name("middlename"), contactData.getMidname());
     typeOtherFields(By.name("lastname"), contactData.getLastname());
@@ -29,7 +30,12 @@ public class ContactHelper extends BaseHelper {
     type(By.name("company"), contactData.getCompanyname());
     type(By.name("mobile"), contactData.getMobphone());
     type(By.name("email"), contactData.getE_mail());
-    //click(By.name("new_group"));
+
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
 
   public void clickPageAddNew() {
@@ -51,10 +57,6 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//div[4]/form/input[@value='Update']"));
     //click(By.xpath("//input[@name='update']"));
     //click(By.xpath("//form multipart/form-data'[./input[@name='Update']"));
-  }
-
-  public void returnToHomePage() {
-    click(By.linkText("home page"));
   }
 
   public void checkToDeleteContact() {

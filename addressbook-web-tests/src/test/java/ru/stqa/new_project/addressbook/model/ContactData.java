@@ -8,9 +8,10 @@ public class ContactData {
   private final String companyname;
   private final String mobphone;
   private final String e_mail;
+  private String group;
   private String groupname;
 
-  public ContactData(String name, String midname, String lastname, String nick, String companyname, String mobphone, String e_mail) {
+  public ContactData(String name, String midname, String lastname, String nick, String companyname, String mobphone, String e_mail, String group) {
     this.name = name;
     this.midname = midname;
     this.lastname = lastname;
@@ -18,6 +19,7 @@ public class ContactData {
     this.companyname = companyname;
     this.mobphone = mobphone;
     this.e_mail = e_mail;
+    this.group = group;
   }
   public void checkCreatedGroup(String groupname){
     this.groupname = groupname;
@@ -53,4 +55,8 @@ public class ContactData {
   }
 
   public String getGroupname() {return groupname;}
+
+  public String getGroup() {
+    return group;
+  }
 }

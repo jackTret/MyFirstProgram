@@ -2,6 +2,7 @@ package ru.stqa.new_project.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.new_project.addressbook.model.GroupData;
 
@@ -17,8 +18,13 @@ public class BaseHelper {
   }
 
   protected void typeOtherFields(By locator, String text) {
+     if (text != null) {
+      String existingText = wd.findElement(locator).getAttribute("value");
+      if (! text.equals(existingText)) {
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
+      }
+    }
   }
 
   protected void type(By locator, String text) {
@@ -29,7 +35,7 @@ public class BaseHelper {
   protected void submit(By locator) {
     wd.findElement(locator).submit();
   }
-  public boolean isAtertPresent () {
+  public boolean isAlertPresent(By name) {
     try {
       wd.switchTo().alert();
       return true;
@@ -39,6 +45,11 @@ public class BaseHelper {
   }
 
   public void gotoGroupPage() {
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("new"))) {
+      return;
+    }
     click(By.linkText("groups"));
   }
 
@@ -56,5 +67,21 @@ public class BaseHelper {
     type(By.name("user"), username);
     type(By.name("pass"), password);
     submit(By.id("LoginForm"));
+  }
+
+  protected boolean isElementPresent(By locator) {
+    try{
+      wd.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+  }
+
+  public void returnToHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home page"));
   }
 }
