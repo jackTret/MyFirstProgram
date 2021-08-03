@@ -11,6 +11,7 @@ public class ContactData {
   private String group;
   private String groupname;
 
+
   public ContactData(String name, String midname, String lastname, String nick, String companyname, String mobphone, String e_mail, String group) {
     this.name = name;
     this.midname = midname;

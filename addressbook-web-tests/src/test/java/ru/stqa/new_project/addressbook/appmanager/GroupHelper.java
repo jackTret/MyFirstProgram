@@ -35,6 +35,7 @@ public class GroupHelper extends BaseHelper {
   }
 
   public void createGroup(GroupData group) {
+    //returnToGroupPage();
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();

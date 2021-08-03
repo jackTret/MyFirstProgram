@@ -10,6 +10,7 @@ public class ContactCreationTest extends TestBase{
     app.contactHelper.clickPageAddNew();
     app.contactHelper.fillContactForms(new ContactData("Владимир", "Иванович", "Згарданов", "Zgardan", "NightClub", "+79057312337", "Zgardanych777@gmail.com", "test1"), true);
     app.contactHelper.checkCreatedGroup("test1");
+    app.contactHelper.checkContact();
     //app.contactHelper.watchChoiceInContactForm();
   }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.new_project.addressbook.model.ContactData;
+import ru.stqa.new_project.addressbook.model.GroupData;
 
 public class ContactHelper extends BaseHelper {
 
@@ -48,9 +49,9 @@ public class ContactHelper extends BaseHelper {
     //click(By.xpath("//*[text()='Edit']"));
   }
 
-  //public void checkContact() {
-  //  click(By.xpath("//div[@id='content']/form/input[3]"));
-  //}
+  public void checkContact() {
+    click(By.xpath("//div[@id='content']/form/input[21]"));
+  }
   public void clickUpdateContact() {
     //click(By.name("Update"));
     //click(By.xpath("//div[@id='content']//form/input[contains(@,Update)]"));
@@ -70,5 +71,22 @@ public class ContactHelper extends BaseHelper {
 
   public void closeAlert() {
     wd.switchTo().alert().accept();
+  }
+
+  public void createContact(ContactData contactData) {
+    clickPageAddNew();
+    fillContactForms(new ContactData("Vladimir",
+            "Ivanovich",
+            "Zgardanov",
+            "Zgardan",
+            "NightClub",
+            "+79057312337",
+            "Zgardanych777@gmail.com",
+            "test1"), true);
+    checkContact();
+    returnToHomePage();
+  }
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("//div[4]/form/input[@value='Update']"));
   }
 }
