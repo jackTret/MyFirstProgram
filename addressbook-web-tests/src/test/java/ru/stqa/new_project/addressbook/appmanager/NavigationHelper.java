@@ -19,9 +19,9 @@ public class NavigationHelper extends BaseHelper{
   }
 
   public void returnToHomePage() {
-    if (isElementPresent(By.id("maintable"))) {
+    if (isElementPresent(By.xpath("//a[contains(text(),'home')]"))) {
       return;
     }
-    click(By.linkText("home page"));
+    click(By.linkText("home"));
   }
 }

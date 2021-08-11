@@ -26,6 +26,10 @@ public class GroupHelper extends BaseHelper {
     click(By.name("selected[]"));
   }
 
+  //public void clickFirstGroup() {
+  //  click(By.name("//input[@type='checkbox']"));
+  //}
+
   public void initGroupModification() {
     click(By.name("edit"));
   }
@@ -40,6 +44,13 @@ public class GroupHelper extends BaseHelper {
     fillGroupForm(group);
     submitGroupCreation();
     returnToGroupPage();
+    //returnToHomePage();
+  }
+
+  public void returnToHomePage() {
+    //click(By.xpath("//a[contains(@href, './')]"));
+    click(By.linkText("home"));
+    //click(By.xpath("//div[@id='content']/div/i/a[2]"));
   }
 
   public boolean isThereAGroup() {
