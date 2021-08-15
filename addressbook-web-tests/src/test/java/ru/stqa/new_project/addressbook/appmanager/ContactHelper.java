@@ -2,9 +2,13 @@ package ru.stqa.new_project.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.new_project.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
 
@@ -36,8 +40,10 @@ public class ContactHelper extends BaseHelper {
     click(By.linkText("add new"));
   }
 
-  public void clickFirstContact() {
-    click(By.xpath("//input[@type='checkbox']"));
+  public void clickFirstContact(int index) {
+    //click(By.xpath("//input[@type='checkbox']"));
+    wd.findElements(By.name("selected[]")).get(index).click();
+    //wd.findElements(By.xpath("//input[@type='checkbox']")).get(index).click();
     //click(By.xpath("//*[@href='edit.php?id=3']"));
     //click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     //click(By.xpath("//*[text()='Edit']"));
@@ -83,10 +89,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void returnToHomePage() {
-    if (isElementPresent(By.id("maintable"))) {
-      return;
-    }
-    click(By.linkText("home page"));
+    click(By.linkText("home"));
   }
 
   public boolean isThereAContact() {
@@ -108,4 +111,28 @@ public class ContactHelper extends BaseHelper {
     type(By.name("mobile"), contactData.getMobphone());
     type(By.name("email"), contactData.getE_mail());
   }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    //List<WebElement> elements = wd.findElements(By.cssSelector("td.center"));
+    for (WebElement element : elements) {
+      String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
+      String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
+      int id  = Integer.parseInt(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
+      ContactData contact = new ContactData(name, null, lastname, null, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
+    /*List<GroupData> groups = new ArrayList<GroupData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements){
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      GroupData group = new GroupData(id, name, null, null);
+      groups.add(group);
+    }
+    return groups;*/
+
 }
