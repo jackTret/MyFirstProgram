@@ -52,6 +52,13 @@ public class GroupHelper extends BaseHelper {
     returnToGroupPage();
     //returnToHomePage();
   }
+  public void modifyGroup(int index, GroupData group) {
+    selectGroup(index);
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
 
   public void returnToHomePage() {
     //click(By.xpath("//a[contains(@href, './')]"));
