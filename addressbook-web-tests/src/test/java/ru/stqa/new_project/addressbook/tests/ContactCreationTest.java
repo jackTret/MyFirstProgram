@@ -12,9 +12,9 @@ public class ContactCreationTest extends TestBase{
 
   @Test (enabled = false)
   public void testContactCreationTests() throws Exception {
-    app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().isThereAGroup()) {
-      app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+    app.goTo().groupPage();
+    if (! app.group().isThereAGroup()) {
+      app.group().create(new GroupData().withName("test1"));
     }
     app.contactHelper.returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();

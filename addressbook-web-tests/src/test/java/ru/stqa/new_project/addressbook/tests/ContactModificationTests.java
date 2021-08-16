@@ -12,11 +12,11 @@ public class ContactModificationTests extends TestBase {
 
   @Test (enabled = false)
   public void testContactModification() {
-   app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().isThereAGroup()) {
-      app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+   app.goTo().groupPage();
+    if (! app.group().isThereAGroup()) {
+      app.group().create(new GroupData().withName("test1"));
     }
-    app.getGroupHelper().returnToHomePage();
+    app.group().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Vladimir",
@@ -27,7 +27,7 @@ public class ContactModificationTests extends TestBase {
               "+79057312337",
               "Zgardanych777@gmail.com", "test1"));
     }
-    app.getGroupHelper().returnToHomePage();
+    app.group().returnToHomePage();
     app.contactHelper.clickFirstContact(before.size() - 1);
     app.contactHelper.clickEditContact();
     ContactData contact = new ContactData("Vladimir",

@@ -12,9 +12,9 @@ public class ContactDeletionTests extends TestBase{
 
   @Test (enabled = false)
   public void testContactDeletion () {
-  app.getNavigationHelper().gotoGroupPage();
-  if (! app.getGroupHelper().isThereAGroup()) {
-    app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+  app.goTo().groupPage();
+  if (! app.group().isThereAGroup()) {
+    app.group().create(new GroupData().withName("test1"));
   }
   app.getContactHelper().returnToHomePage();
   List<ContactData> before = app.getContactHelper().getContactList();
