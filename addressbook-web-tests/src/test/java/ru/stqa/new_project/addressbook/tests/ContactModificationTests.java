@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test (enabled = true)
   public void testContactModification() {
    app.goTo().groupPage();
     if (! app.group().isThereAGroup()) {
@@ -28,8 +28,7 @@ public class ContactModificationTests extends TestBase {
               "Zgardanych777@gmail.com", "test1"));
     }
     app.group().returnToHomePage();
-    app.contactHelper.clickFirstContact(before.size() - 1);
-    app.contactHelper.clickEditContact();
+    app.contactHelper.clickEditContact(before.size() - 1);
     ContactData contact = new ContactData("Vladimir",
             "Ivanovich",
             "Zgardanov",

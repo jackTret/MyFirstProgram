@@ -49,9 +49,10 @@ public class ContactHelper extends BaseHelper {
     //click(By.xpath("//*[text()='Edit']"));
   }
 
-  public void clickEditContact() {
+  public void clickEditContact(int index) {
     //click(By.xpath("//div[@id='content']/form/input[21]"));
-    click(By.xpath("//img[@alt='Edit']"));
+    wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+    //click(By.xpath("//img[@alt='Edit']"));
   }
   public void checkUpdateButtonContact() {
     //click(By.name("Update"));
