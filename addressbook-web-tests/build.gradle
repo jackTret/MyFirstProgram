@@ -13,6 +13,7 @@ dependencies {
     implementation ('org.testng:testng:7.4.0')
     implementation ('org.seleniumhq.selenium:selenium-java:3.141.59')
     implementation('mysql:mysql-connector-java:8.0.26')
+    implementation('it.ozimov:hamcrest:2.0.0')
 
 }
 

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.new_project.addressbook.model.GroupData;
+import ru.stqa.new_project.addressbook.model.Groups;
 
 import java.util.*;
 
@@ -29,10 +30,6 @@ public class GroupHelper extends BaseHelper {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     //click(By.name("selected[]"));
   }
-
-  //public void clickFirstGroup() {
-  //  click(By.name("//input[@type='checkbox']"));
-  //}
 
   public void initGroupModification() {
     click(By.name("edit"));
@@ -62,21 +59,8 @@ public class GroupHelper extends BaseHelper {
     returnToGroupPage();
   }
 
-  public void returnToHomePage() {
-    click(By.linkText("home"));
-    //click(By.xpath("//div[@id='content']/div/i/a[2]"));
-  }
-
-  public boolean isThereAGroup() {
-    return isAlertPresent(By.name("selected[]"));
-  }
-
-  public int getGroupCount() {
-    return wd.findElements(By.name("selected[]")).size();
-  }
-
-  public Set<GroupData> all() {
-    Set<GroupData> groups = new HashSet<GroupData>();
+  public Groups all() {
+    Groups groups = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements){
       String name = element.getText();
