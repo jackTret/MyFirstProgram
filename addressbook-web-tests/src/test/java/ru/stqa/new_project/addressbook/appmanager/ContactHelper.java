@@ -41,9 +41,16 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void clickEditContactById(int id) {
-    //click(By.xpath("//div[@id='content']/form/input[21]"));
-    wd.findElement(By.xpath("//img[@alt='Edit']")).click();
-    //click(By.xpath("//img[@alt='Edit']"));
+    //wd.findElement(By.xpath("//div[@id='content']/form/input[21]"));
+    //wd.findElement(By.xpath("//img[@alt='Edit']")).click();
+    //WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    //WebElement row = checkbox.findElement(By.xpath("./../.."));
+    //List<WebElement> cells = row.findElements(By.tagName("td"));
+    //cells.get(7).findElement(By.tagName("a")).click();
+    //wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
+    //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+
   }
   public void checkUpdateButtonContact() {
     //click(By.name("Update"));
