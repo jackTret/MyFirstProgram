@@ -9,15 +9,21 @@ public class ContactData {
   private String lastname;
   private String nick;
   private String companyname;
+  private String address;
   private String mobphone;
   private String e_mail;
+  private String e_mailWork;
+  private String e_mailNew;
+  private String home;
+  private String work;
+  private String allPhones;
+  private String allE_mails;
   private String group;
-  private String groupname;
+  //private String groupname;
 
-  public void checkCreatedGroup(String groupname){
+  /*public void checkCreatedGroup(String groupname){
     this.groupname = groupname;
-  }
-
+  }*/
 
   public String getName() {
     return name;
@@ -39,12 +45,35 @@ public class ContactData {
     return companyname;
   }
 
-  public String getMobphone() {
-    return mobphone;
+  public String getAddress() {
+    return address;
   }
-
   public String getE_mail() {
     return e_mail;
+  }
+
+  public String getE_mailNew() {
+    return e_mailNew;
+  }
+  public String getE_mailWork() {
+    return e_mailWork;
+  }
+  public String getAllE_mails() {
+    return allE_mails;
+  }
+  public String getMobPhone() {
+    return mobphone;
+  }
+  public String getHome() {
+    return home;
+  }
+
+  public String getWork() {
+    return work;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
   }
 
   public int getId() {
@@ -57,6 +86,7 @@ public class ContactData {
 
   @Override
   public String toString() {
+
     return "ContactData{" +
             "id=" + id +
             ", name='" + name + '\'' +
@@ -73,8 +103,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withMidname(String midname) {
-    this.midname = midname;
+  public ContactData withMidName(String midName) {
+    this.midname = midName;
     return this;
   }
 
@@ -88,18 +118,27 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withCompanyname(String companyname) {
-    this.companyname = companyname;
+  public ContactData withCompanyName(String companyName) {
+    this.companyname = companyName;
     return this;
   }
 
-  public ContactData withMobphone(String mobphone) {
-    this.mobphone = mobphone;
+  public ContactData withMobPhone(String mobPhone) {
+    this.mobphone = mobPhone;
     return this;
   }
 
   public ContactData withE_mail(String e_mail) {
     this.e_mail = e_mail;
+    return this;
+  }
+  public ContactData withHomePhone(String home) {
+    this.home = home;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String work) {
+    this.work = work;
     return this;
   }
 
@@ -108,16 +147,41 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withE_mailWork(String e_mailWork) {
+    this.e_mailWork = e_mailWork;
+    return this;
+  }
+
+  public ContactData withE_mailNew(String e_mailNew) {
+    this.e_mailNew = e_mailNew;
+    return this;
+  }
+
+  public ContactData withAllE_mails(String allE_mails) {
+    this.allE_mails = allE_mails;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(name, that.name) && Objects.equals(lastname, that.lastname);
+    return id == that.id && Objects.equals(name, that.name) && Objects.equals(lastname, that.lastname) && Objects.equals(address, that.address) && Objects.equals(mobphone, that.mobphone) && Objects.equals(e_mail, that.e_mail);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, lastname);
+    return Objects.hash(id, name, lastname, address, mobphone, e_mail);
   }
 }

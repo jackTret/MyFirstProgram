@@ -1,13 +1,10 @@
 package ru.stqa.new_project.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.new_project.addressbook.model.ContactData;
 import ru.stqa.new_project.addressbook.model.Contacts;
 import ru.stqa.new_project.addressbook.model.GroupData;
-
-import java.util.Comparator;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,12 +22,17 @@ public class ContactDeletionTests extends TestBase{
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData()
               .withName("Vladimir")
-              .withMidname("Ivanovich")
+              .withMidName("Ivanovich")
               .withLastname("Zgardanov")
               .withNick("Zgardan")
-              .withCompanyname("NightClub")
-              .withMobphone("+79057312337")
+              .withCompanyName("NightClub")
+              .withAddress("115666 Moscow, Black st., h.666")
+              .withMobPhone("+79057312337")
+              .withHomePhone("+74955467743")
+              .withWorkPhone("+74995467743")
               .withE_mail("Zgardanych777@gmail.com")
+              .withE_mailNew("Zgardanych787@gmail.com")
+              .withE_mailWork("Zgardanych797@gmail.com")
               .withGroup("test1"));
     }
   }

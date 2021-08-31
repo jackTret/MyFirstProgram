@@ -22,15 +22,21 @@ public class ContactCreationTest extends TestBase{
   @Test (enabled = true)
   public void testContactCreationTests() throws Exception {
     app.contact().ContactHomePage();
+    //ContactData contact = app.contact().all().iterator().next();
     Contacts before = app.contact().all();
     ContactData contact = new ContactData()
             .withName("Vladimir")
-            .withMidname("Ivanovich")
+            .withMidName("Ivanovich")
             .withLastname("Zgardanov")
             .withNick("Zgardan")
-            .withCompanyname("NightClub")
-            .withMobphone("+79057312337")
+            .withCompanyName("NightClub")
+            .withAddress("115666 Moscow, Black st., h.666")
+            .withMobPhone("+79057312337")
+            .withHomePhone("+74955467743")
+            .withWorkPhone("+74995467743")
             .withE_mail("Zgardanych777@gmail.com")
+            .withE_mailNew("Zgardanych787@gmail.com")
+            .withE_mailWork("Zgardanych797@gmail.com")
             .withGroup("test1");
     app.contact().create(contact);
     Contacts after = app.contact().all();
