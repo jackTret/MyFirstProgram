@@ -156,7 +156,14 @@ public class ContactHelper extends BaseHelper {
       //String[] phones = cells.get(5).getText().split("\n");
       String allPhones = cells.get(5).getText();
       String allEmails = cells.get(4).getText();
-      contacts.add(new ContactData().withId(id).withName(name).withLastname(lastname).withAllPhones(allPhones).withAllE_mails(allEmails));
+      String address = cells.get(3).getText();
+      contacts.add(new ContactData()
+              .withId(id)
+              .withName(name)
+              .withLastname(lastname)
+              .withAddress(address)
+              .withAllE_mails(allEmails)
+              .withAllPhones(allPhones));
               //.withHomePhone(phones[0]).withMobPhone(phones[1]).withWorkPhone(phones[2]));
 
     }
