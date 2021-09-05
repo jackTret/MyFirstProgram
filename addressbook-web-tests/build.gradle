@@ -5,6 +5,10 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+tasks.withType(Test) {
+    systemProperty"file.encoding", "UTF-8"
+}
+
 repositories {
     mavenCentral()
 }
@@ -14,6 +18,7 @@ dependencies {
     implementation ('org.seleniumhq.selenium:selenium-java:3.141.59')
     implementation('mysql:mysql-connector-java:8.0.26')
     implementation('it.ozimov:hamcrest:2.0.0')
+    implementation('com.beust:jcommander:1.81')
 
 }
 
