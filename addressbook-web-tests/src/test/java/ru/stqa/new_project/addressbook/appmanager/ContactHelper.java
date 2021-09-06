@@ -194,6 +194,10 @@ public class ContactHelper extends BaseHelper {
             .withMobPhone(mobphone)
             .withWorkPhone(work);
   }
+
+  public int count() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
     /*List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements){

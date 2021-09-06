@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Vladimir 1",
+    "midname": "Ivanovich 1",
+    "lastname": "Zgardanov 1",
+    "nick": "Zgardan 1",
+    "companyname": "NightClub 1",
+    "address": "115666 Moscow, Black st., h.60",
+    "mobphone": "+79057312330",
+    "e_mail": "Zgardanych770@gmail.com",
+    "e_mailWork": "Zgardanych780@gmail.com",
+    "e_mailNew": "Zgardanych790@gmail.com",
+    "home": "+74955467740",
+    "work": "+74995467740",
+    "group": "test1",
+    "photo": {
+      "path": "src\\test\\resources\\kitten_child.png"
+    }
+  },
+  {
+    "name": "Vladimir 2",
+    "midname": "Ivanovich 2",
+    "lastname": "Zgardanov 2",
+    "nick": "Zgardan 2",
+    "companyname": "NightClub 2",
+    "address": "115666 Moscow, Black st., h.61",
+    "mobphone": "+79057312331",
+    "e_mail": "Zgardanych771@gmail.com",
+    "e_mailWork": "Zgardanych781@gmail.com",
+    "e_mailNew": "Zgardanych791@gmail.com",
+    "home": "+74955467741",
+    "work": "+74995467741",
+    "group": "test2",
+    "photo": {
+      "path": "src\\test\\resources\\kitten_child.png"
+    }
+  },
+  {
+    "name": "Vladimir 3",
+    "midname": "Ivanovich 3",
+    "lastname": "Zgardanov 3",
+    "nick": "Zgardan 3",
+    "companyname": "NightClub 3",
+    "address": "115666 Moscow, Black st., h.62",
+    "mobphone": "+79057312332",
+    "e_mail": "Zgardanych772@gmail.com",
+    "e_mailWork": "Zgardanych782@gmail.com",
+    "e_mailNew": "Zgardanych792@gmail.com",
+    "home": "+74955467742",
+    "work": "+74995467742",
+    "group": "test3",
+    "photo": {
+      "path": "src\\test\\resources\\kitten_child.png"
+    }
+  }
+]

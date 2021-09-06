@@ -1,25 +1,45 @@
 package ru.stqa.new_project.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
+  @XStreamOmitField
   private  int id = Integer.MAX_VALUE;
+  @Expose
   private String name;
+  @Expose
   private String midname;
+  @Expose
   private String lastname;
+  @Expose
   private String nick;
+  @Expose
   private String companyname;
+  @Expose
   private String address;
+  @Expose
   private String mobphone;
+  @Expose
   private String e_mail;
+  @Expose
   private String e_mailWork;
+  @Expose
   private String e_mailNew;
+  @Expose
   private String home;
+  @Expose
   private String work;
+  @Expose
   private String allPhones;
+  @Expose
   private String allE_mails;
+  @Expose
   private String group;
+  @Expose
   private File photo;
 
 
@@ -190,11 +210,11 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(name, that.name) && Objects.equals(lastname, that.lastname) && Objects.equals(address, that.address) && Objects.equals(mobphone, that.mobphone) && Objects.equals(e_mail, that.e_mail);
+    return id == that.id && Objects.equals(mobphone, that.mobphone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, lastname, address, mobphone, e_mail);
+    return Objects.hash(id, mobphone);
   }
 }
