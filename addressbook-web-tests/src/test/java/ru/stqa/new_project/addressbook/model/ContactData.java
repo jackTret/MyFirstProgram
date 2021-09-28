@@ -43,12 +43,6 @@ public class ContactData {
   private File photo;
 
 
-//private String groupname;
-
-  /*public void checkCreatedGroup(String groupname){
-    this.groupname = groupname;
-  }*/
-
   public String getName() {
     return name;
   }
@@ -114,11 +108,24 @@ public class ContactData {
 
   @Override
   public String toString() {
-
     return "ContactData{" +
             "id=" + id +
             ", name='" + name + '\'' +
+            ", midname='" + midname + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", nick='" + nick + '\'' +
+            ", companyname='" + companyname + '\'' +
+            ", address='" + address + '\'' +
+            ", mobphone='" + mobphone + '\'' +
+            ", e_mail='" + e_mail + '\'' +
+            ", e_mailWork='" + e_mailWork + '\'' +
+            ", e_mailNew='" + e_mailNew + '\'' +
+            ", home='" + home + '\'' +
+            ", work='" + work + '\'' +
+            ", allPhones='" + allPhones + '\'' +
+            ", allE_mails='" + allE_mails + '\'' +
+            ", group='" + group + '\'' +
+            ", photo=" + photo +
             '}';
   }
 
@@ -210,11 +217,11 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(mobphone, that.mobphone);
+    return id == that.id && Objects.equals(name, that.name) && Objects.equals(lastname, that.lastname) && Objects.equals(mobphone, that.mobphone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, mobphone);
+    return Objects.hash(id, name, lastname, mobphone);
   }
 }

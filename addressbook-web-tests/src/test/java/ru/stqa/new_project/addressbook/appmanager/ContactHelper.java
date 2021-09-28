@@ -34,29 +34,17 @@ public class ContactHelper extends BaseHelper {
   public void selectContactById(int id) {
     //click(By.xpath("//input[@type='checkbox']"));
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-    //wd.findElements(By.xpath("//input[@type='checkbox']")).get(index).click();
-    //click(By.xpath("//*[@href='edit.php?id=3']"));
-    //click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
-    //click(By.xpath("//*[text()='Edit']"));
   }
 
   public void clickEditContactById(int id) {
-    //wd.findElement(By.xpath("//div[@id='content']/form/input[21]"));
-    //wd.findElement(By.xpath("//img[@alt='Edit']")).click();
-    //WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
-    //WebElement row = checkbox.findElement(By.xpath("./../.."));
-    //List<WebElement> cells = row.findElements(By.tagName("td"));
-    //cells.get(7).findElement(By.tagName("a")).click();
     //wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
-    //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
+    wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
 
   }
   public void checkUpdateButtonContact() {
-    //click(By.name("Update"));
     //click(By.xpath("//div[@id='content']//form/input[contains(@,Update)]"));
     click(By.xpath("//div[@id='content']/form/input"));
-    //click(By.xpath("//input[@name='update']"));
     //click(By.xpath("//form multipart/form-data'[./input[@name='Update']"));
   }
 
@@ -92,6 +80,10 @@ public class ContactHelper extends BaseHelper {
     ContactHomePage();
   }
 
+  public int countContact() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
   public void ContactHomePage() {
     click(By.linkText("home"));
   }
@@ -109,8 +101,8 @@ public class ContactHelper extends BaseHelper {
     attach(By.name("photo"), contactData.getPhoto());
     type(By.name("company"), contactData.getCompanyname());
     type(By.name("address"), contactData.getAddress());
-    type(By.name("mobile"), contactData.getMobPhone());
     type(By.name("home"), contactData.getHome());
+    type(By.name("mobile"), contactData.getMobPhone());
     type(By.name("work"), contactData.getWork());
     type(By.name("email"), contactData.getE_mail());
     type(By.name("email2"), contactData.getE_mailWork());
@@ -130,7 +122,7 @@ public class ContactHelper extends BaseHelper {
     }
     return contacts;
   }*/
-  /*public Contacts all() {
+  /*public Contacts allOld() {
     Contacts contacts = new Contacts();
     List<WebElement> rows = wd.findElements(By.name("entry"));
   //List<WebElement> elements = wd.findElements(By.cssSelector("td.center"));
@@ -157,14 +149,15 @@ public class ContactHelper extends BaseHelper {
       //String[] phones = cells.get(5).getText().split("\n");
       String allPhones = cells.get(5).getText();
       String allEmails = cells.get(4).getText();
+      //String[] emails = allEmails.split("\n");
       String address = cells.get(3).getText();
       contacts.add(new ContactData()
               .withId(id)
               .withName(name)
               .withLastname(lastname)
-              .withAddress(address)
               .withAllE_mails(allEmails)
-              .withAllPhones(allPhones));
+              .withAllPhones(allPhones)
+              .withAddress(address));
               //.withHomePhone(phones[0]).withMobPhone(phones[1]).withWorkPhone(phones[2]));
 
     }
@@ -186,17 +179,13 @@ public class ContactHelper extends BaseHelper {
     return new ContactData().withId(contact.getId())
             .withName(name)
             .withLastname(lastname)
+            .withHomePhone(home)
+            .withMobPhone(mobphone)
+            .withWorkPhone(work)
             .withAddress(address)
             .withE_mail(e_mail)
             .withE_mailNew(e_mailNew)
-            .withE_mailWork(e_mailWork)
-            .withHomePhone(home)
-            .withMobPhone(mobphone)
-            .withWorkPhone(work);
-  }
-
-  public int count() {
-    return wd.findElements(By.name("selected[]")).size();
+            .withE_mailWork(e_mailWork);
   }
     /*List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));

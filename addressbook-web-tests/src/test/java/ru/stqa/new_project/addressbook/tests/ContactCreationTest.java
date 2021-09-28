@@ -41,33 +41,17 @@ public class ContactCreationTest extends TestBase{
     }
     Gson gson = new Gson();
     List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType()); //List<ContactData>.class
-    return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
+    return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
   }
 
   @Test(dataProvider = "validContactsFromJson")
   public void testContactCreationTests(ContactData contact) throws Exception {
     app.contact().ContactHomePage();
     Contacts before = app.contact().all();
-    //File photo = new File("src/test/resources/kitten_child.png");
-    /*ContactData contact = new ContactData()
-            .withName("Vladimir")
-            .withMidName("Ivanovich")
-            .withLastname("Zgardanov")
-            .withNick("Zgardan")
-            .withPhoto(photo)
-            .withCompanyName("NightClub")
-            .withAddress("115666 Moscow, Black st., h.666")
-            .withMobPhone("+79057312337")
-            .withHomePhone("+74955467743")
-            .withWorkPhone("+74995467743")
-            .withE_mail("Zgardanych777@gmail.com")
-            .withE_mailNew("Zgardanych787@gmail.com")
-            .withE_mailWork("Zgardanych797@gmail.com")
-            .withGroup("test1");*/
+    File photo = new File("src/test/resources/kitten_child.png");
     app.contact().create(contact);
-    assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
-    //assertThat(app.contact().count(), equalTo(before.size() + 1));
+    assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
