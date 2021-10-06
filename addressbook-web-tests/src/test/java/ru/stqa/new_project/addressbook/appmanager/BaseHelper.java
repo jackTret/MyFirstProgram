@@ -19,7 +19,7 @@ public class BaseHelper {
     wd.findElement(locator).click();
   }
 
-  protected void typeOtherFields(By locator, String text) {
+  /*protected void typeOtherFields(By locator, String text) {
      if (text != null) {
       String existingText = wd.findElement(locator).getAttribute("value");
       if (! text.equals(existingText)) {
@@ -27,7 +27,7 @@ public class BaseHelper {
     wd.findElement(locator).sendKeys(text);
       }
     }
-  }
+  }*/
 
   protected void attach(By locator, File file) {
     if (file != null) {
@@ -37,7 +37,14 @@ public class BaseHelper {
 
   protected void type(By locator, String text) {
     click(locator);
-    typeOtherFields(locator, text);
+    if (text != null) {
+      String existingText = wd.findElement(locator).getAttribute("value");
+      if (!text.equals(existingText)) {
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+        //typeOtherFields(locator, text);
+      }
+    }
   }
 
   protected void submit(By locator) {

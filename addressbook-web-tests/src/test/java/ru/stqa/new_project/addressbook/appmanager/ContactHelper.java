@@ -18,6 +18,16 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void fillContactForms(ContactData contactData, boolean creation) {
+    /*type(By.name("firstname"), contactData.getName());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("home"), contactData.getHome());
+    type(By.name("mobile"), contactData.getMobPhone());
+    type(By.name("work"), contactData.getWork());
+    type(By.name("email"), contactData.getE_mail());
+    type(By.name("email2"), contactData.getE_mailNew());
+    type(By.name("email3"), contactData.getE_mailWork());
+    type(By.name("address"), contactData.getAddress());
+    attach(By.name("photo"), contactData.getPhoto());*/
     modifyContactForms(contactData);
 
     if (creation) {
@@ -38,8 +48,8 @@ public class ContactHelper extends BaseHelper {
 
   public void clickEditContactById(int id) {
     //wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
-    wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
-    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+    //wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
 
   }
   public void checkUpdateButtonContact() {
@@ -66,7 +76,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void modify(ContactData contact) {
-    ContactHomePage();
+    //ContactHomePage();
     clickEditContactById(contact.getId());
     modifyContactForms(contact);
     checkUpdateButtonContact();
@@ -95,9 +105,9 @@ public class ContactHelper extends BaseHelper {
 
   public void modifyContactForms(ContactData contactData) {
     type(By.name("firstname"), contactData.getName());
-    typeOtherFields(By.name("middlename"), contactData.getMidname());
-    typeOtherFields(By.name("lastname"), contactData.getLastname());
-    typeOtherFields(By.name("nickname"), contactData.getNick());
+    type(By.name("middlename"), contactData.getMidname());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("nickname"), contactData.getNick());
     attach(By.name("photo"), contactData.getPhoto());
     type(By.name("company"), contactData.getCompanyname());
     type(By.name("address"), contactData.getAddress());

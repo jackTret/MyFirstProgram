@@ -2,6 +2,7 @@ package ru.stqa.new_project.addressbook.model;
 
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.Objects;
@@ -106,15 +107,16 @@ public class ContactData {
     return photo;
   }
 
+  @Test
+  public void testName() {
+  }
+
   @Override
   public String toString() {
     return "ContactData{" +
             "id=" + id +
             ", name='" + name + '\'' +
-            ", midname='" + midname + '\'' +
             ", lastname='" + lastname + '\'' +
-            ", nick='" + nick + '\'' +
-            ", companyname='" + companyname + '\'' +
             ", address='" + address + '\'' +
             ", mobphone='" + mobphone + '\'' +
             ", e_mail='" + e_mail + '\'' +
@@ -122,10 +124,6 @@ public class ContactData {
             ", e_mailNew='" + e_mailNew + '\'' +
             ", home='" + home + '\'' +
             ", work='" + work + '\'' +
-            ", allPhones='" + allPhones + '\'' +
-            ", allE_mails='" + allE_mails + '\'' +
-            ", group='" + group + '\'' +
-            ", photo=" + photo +
             '}';
   }
 
@@ -217,11 +215,11 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(name, that.name) && Objects.equals(lastname, that.lastname) && Objects.equals(mobphone, that.mobphone);
+    return id == that.id && Objects.equals(name, that.name) && Objects.equals(lastname, that.lastname) && Objects.equals(nick, that.nick) && Objects.equals(companyname, that.companyname) && Objects.equals(address, that.address) && Objects.equals(e_mail, that.e_mail) && Objects.equals(e_mailWork, that.e_mailWork) && Objects.equals(e_mailNew, that.e_mailNew);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, lastname, mobphone);
+    return Objects.hash(id, name, lastname, nick, companyname, address, e_mail, e_mailWork, e_mailNew);
   }
 }

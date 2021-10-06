@@ -51,7 +51,8 @@ public class ContactCreationTest extends TestBase{
     File photo = new File("src/test/resources/kitten_child.png");
     app.contact().create(contact);
     Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
+    //assertThat(after.size(), equalTo(before.size() + 1));
+    assertThat(app.contact().countContact(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
