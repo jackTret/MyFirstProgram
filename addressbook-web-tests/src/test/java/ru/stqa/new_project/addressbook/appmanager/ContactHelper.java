@@ -18,17 +18,20 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void fillContactForms(ContactData contactData, boolean creation) {
-    /*type(By.name("firstname"), contactData.getName());
+    type(By.name("firstname"), contactData.getName());
+    type(By.name("middlename"), contactData.getMidname());
     type(By.name("lastname"), contactData.getLastname());
+    type(By.name("nickname"), contactData.getNick());
+    attach(By.name("photo"), contactData.getPhoto());
+    type(By.name("company"), contactData.getCompanyname());
+    type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHome());
     type(By.name("mobile"), contactData.getMobPhone());
     type(By.name("work"), contactData.getWork());
     type(By.name("email"), contactData.getE_mail());
-    type(By.name("email2"), contactData.getE_mailNew());
-    type(By.name("email3"), contactData.getE_mailWork());
-    type(By.name("address"), contactData.getAddress());
-    attach(By.name("photo"), contactData.getPhoto());*/
-    modifyContactForms(contactData);
+    type(By.name("email2"), contactData.getE_mailWork());
+    type(By.name("email3"), contactData.getE_mailNew());
+    //modifyContactForms(contactData);
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -76,7 +79,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void modify(ContactData contact) {
-    //ContactHomePage();
+    ContactHomePage();
     clickEditContactById(contact.getId());
     modifyContactForms(contact);
     checkUpdateButtonContact();
@@ -156,7 +159,7 @@ public class ContactHelper extends BaseHelper {
       int id  = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
       String lastname = cells.get(1).getText();
       String name = cells.get(2).getText();
-      //String[] phones = cells.get(5).getText().split("\n");
+      String[] phones = cells.get(5).getText().split("\n");
       String allPhones = cells.get(5).getText();
       String allEmails = cells.get(4).getText();
       //String[] emails = allEmails.split("\n");
@@ -165,6 +168,7 @@ public class ContactHelper extends BaseHelper {
               .withId(id)
               .withName(name)
               .withLastname(lastname)
+              .withMobPhone(phones[1])
               .withAllE_mails(allEmails)
               .withAllPhones(allPhones)
               .withAddress(address));
