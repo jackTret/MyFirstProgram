@@ -36,8 +36,8 @@ public class ContactDeletionTests extends TestBase{
               .withE_mailNew("Zgardanych787@gmail.com")
               .withE_mailWork("Zgardanych797@gmail.com")
               .withHomePhone("+74955467743")
-              .withWorkPhone("+74995467743")
-              .withGroup("test 1"));
+              .withWorkPhone("+74995467743"));
+              //.withGroup("test 1"));
     }
   }
 

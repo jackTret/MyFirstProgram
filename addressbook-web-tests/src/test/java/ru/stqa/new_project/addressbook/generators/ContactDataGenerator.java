@@ -58,9 +58,10 @@ public class ContactDataGenerator {
   }
   private static class MyFileSerializer implements JsonSerializer<File> {
     public JsonElement serialize(File src, Type typeOfSrc, JsonSerializationContext context) {
-      JsonObject obj = new JsonObject();
-      obj.add("path", new JsonPrimitive(src.getPath()));
-      return obj;
+      //JsonObject obj = new JsonObject();
+      //obj.add("path", new JsonPrimitive(src.getPath()));
+      //return obj;
+      return new JsonPrimitive(src.getPath());
     }
   }
 
