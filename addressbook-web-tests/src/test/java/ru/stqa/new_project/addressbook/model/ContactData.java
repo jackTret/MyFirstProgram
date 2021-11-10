@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.Objects;
 
 @Entity
-@Table(name ="addressbook")
+@Table(name = "addressbook")
 public class ContactData {
   @XStreamOmitField
   @Id
@@ -20,55 +20,70 @@ public class ContactData {
   @Expose
   @Column(name ="firstname")
   private String name;
+
   @Expose
   @Column(name ="middlename")
   private String midname;
+
   @Expose
   @Column(name ="lastname")
   private String lastname;
+
   @Expose
   @Column(name ="nickname")
   private String nick;
+
   @Expose
   @Column(name ="company")
   private String companyname;
+
   @Expose
   @Column(name ="address")
   @Type(type="text")
   private String address;
+
   @Expose
   @Column(name ="mobile")
   @Type(type="text")
   private String mobphone;
+
   @Expose
   @Column(name ="email")
   @Type(type="text")
   private String e_mail;
+
   @Expose
   @Column(name ="email2")
   @Type(type="text")
   private String e_mailWork;
+
   @Expose
   @Column(name ="email3")
   @Type(type="text")
   private String e_mailNew;
+
   @Expose
   @Column(name ="home")
   @Type(type="text")
   private String home;
+
   @Expose
   @Column(name ="work")
   @Type(type="text")
   private String work;
+
   @Expose
   @Transient
   private String allPhones;
+
   @Expose
   @Transient
   private String allE_mails;
+
   @Expose
   @Transient
   private String group;
+
   @Expose
   @Column(name ="photo")
   @Type(type="text")
@@ -136,10 +151,6 @@ public class ContactData {
 
   public File getPhoto() {
     return new File (photo);
-  }
-
-  @Test
-  public void testName() {
   }
 
   @Override

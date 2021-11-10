@@ -12,9 +12,7 @@
     "e_mailNew": "Zgardanych790@gmail.com",
     "home": "+74955467740",
     "work": "+74995467740",
-    "group": "test 1",
-    "photo": {
-    "path": "src\\test\\resources\\kitten_child.png"
-    }
+    "group": "test1",
+    "photo": "src\\test\\resources\\kitten_child.png"
   }
 ]

@@ -61,7 +61,7 @@ public class ContactDataGenerator {
       //JsonObject obj = new JsonObject();
       //obj.add("path", new JsonPrimitive(src.getPath()));
       //return obj;
-      return new JsonPrimitive(src.getPath());
+      return new JsonPrimitive(src.toString());
     }
   }
 
