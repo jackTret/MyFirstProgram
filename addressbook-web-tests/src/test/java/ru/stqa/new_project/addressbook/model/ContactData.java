@@ -12,6 +12,19 @@ import java.util.Objects;
 @Entity
 @Table(name = "addressbook")
 public class ContactData {
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id && Objects.equals(name, that.name) && Objects.equals(midname, that.midname) && Objects.equals(lastname, that.lastname) && Objects.equals(nick, that.nick) && Objects.equals(companyname, that.companyname) && Objects.equals(address, that.address) && Objects.equals(mobphone, that.mobphone) && Objects.equals(e_mail, that.e_mail) && Objects.equals(e_mailWork, that.e_mailWork) && Objects.equals(e_mailNew, that.e_mailNew) && Objects.equals(home, that.home) && Objects.equals(work, that.work);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, midname, lastname, nick, companyname, address, mobphone, e_mail, e_mailWork, e_mailNew, home, work);
+  }
+
   @XStreamOmitField
   @Id
   @Column(name ="id")
@@ -167,19 +180,6 @@ public class ContactData {
             ", home='" + home + '\'' +
             ", work='" + work + '\'' +
             '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(name, that.name) && Objects.equals(midname, that.midname) && Objects.equals(lastname, that.lastname) && Objects.equals(nick, that.nick) && Objects.equals(companyname, that.companyname) && Objects.equals(address, that.address) && Objects.equals(mobphone, that.mobphone) && Objects.equals(e_mail, that.e_mail) && Objects.equals(e_mailWork, that.e_mailWork) && Objects.equals(e_mailNew, that.e_mailNew) && Objects.equals(home, that.home) && Objects.equals(work, that.work) && Objects.equals(group, that.group);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, midname, lastname, nick, companyname, address, mobphone, e_mail, e_mailWork, e_mailNew, home, work, group);
   }
 
   public ContactData withId(int id) {
