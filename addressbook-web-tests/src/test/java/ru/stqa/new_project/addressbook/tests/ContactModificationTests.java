@@ -48,7 +48,7 @@ public class ContactModificationTests extends TestBase {
     ContactData modifiedContact = before.iterator().next();
     File photo = new File("src/test/resources/kitten_child.png");
     ContactData contact = new ContactData()
-           .withId(modifiedContact.getId()).withName("Vladimir")
+            .withId(modifiedContact.getId()).withName("Vladimir")
             .withMidName("Ivanovich")
             .withLastname("Zgardanov")
             .withNick("Zgardan")
@@ -67,5 +67,6 @@ public class ContactModificationTests extends TestBase {
     //assertEquals(after.size(), before.size());
     assertThat(after.size(), equalTo(before.size()));
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    verifyContactListInUi();
   }
 }
