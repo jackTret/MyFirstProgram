@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.stqa.new_project.addressbook.model.ContactData;
 import ru.stqa.new_project.addressbook.model.Contacts;
 import ru.stqa.new_project.addressbook.model.GroupData;
+import ru.stqa.new_project.addressbook.model.Groups;
 
 import java.io.File;
 
@@ -36,8 +37,7 @@ public class ContactModificationTests extends TestBase {
             .withE_mailNew("Zgardanych787@gmail.com")
             .withE_mailWork("Zgardanych797@gmail.com")
             .withHomePhone("+74955467743")
-            .withWorkPhone("+74995467743")
-            .withGroup("test 1"));
+            .withWorkPhone("+74995467743"),true);
    }
   }
 
@@ -60,8 +60,7 @@ public class ContactModificationTests extends TestBase {
             .withWorkPhone("+74995467943")
             .withE_mail("Zgardanych877@gmail.com")
             .withE_mailNew("Zgardanych887@gmail.com")
-            .withE_mailWork("Zgardanych897@gmail.com")
-            .withGroup("test 1");
+            .withE_mailWork("Zgardanych897@gmail.com");
     app.contact().modify(contact);
     Contacts after = app.db().contacts();
     //assertEquals(after.size(), before.size());

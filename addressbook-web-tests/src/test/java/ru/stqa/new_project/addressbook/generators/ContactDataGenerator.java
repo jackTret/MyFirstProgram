@@ -82,8 +82,8 @@ public class ContactDataGenerator {
               .withWorkPhone(String.format("+7499546774%s", i))
               .withE_mail(String.format("Zgardanych77%s@gmail.com", i))
               .withE_mailWork(String.format("Zgardanych78%s@gmail.com", i))
-              .withE_mailNew(String.format("Zgardanych79%s@gmail.com", i))
-              .withGroup(String.format("test%s", i+1)));
+              .withE_mailNew(String.format("Zgardanych79%s@gmail.com", i)));
+              //.withGroup(String.format("test%s ", i+1)));
     }
     return contacts;
   }
