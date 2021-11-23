@@ -22,8 +22,8 @@ public class MailHelper {
   }
 
   public List<MailMessage> waitForMail(int count, long timeout) throws MessagingException, IOException {
-    long start = currentTimeMillis();
-    while (currentTimeMillis() < start + timeout) {
+    long start = System.currentTimeMillis();
+    while (System.currentTimeMillis() < start + timeout) {
       if (wiser.getMessages().size() >= count) {
         return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());
       }
@@ -48,7 +48,11 @@ public class MailHelper {
       return null;
     }
   }
-  public void start() { wiser.start(); }
+  public void start() {
+    wiser.start();
+  }
 
-  public void stop() { wiser.stop(); }
+  public void stop() {
+    wiser.stop();
+  }
 }
