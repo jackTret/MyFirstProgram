@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ru.stqa.new_project.addressbook.model.ContactData;
 import ru.stqa.new_project.addressbook.model.Contacts;
 import ru.stqa.new_project.addressbook.model.GroupData;
+import ru.stqa.new_project.addressbook.model.Groups;
 
 import java.util.List;
 
@@ -51,7 +52,8 @@ public class ContactHelper extends BaseHelper {
 
   public void selectContactById(int id) {
     //click(By.xpath("//input[@type='checkbox']"));
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    //wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    wd.findElement(By.cssSelector(String.format("input[value='%s']", id))).click();
   }
 
   public void clickEditContactById(int id) {
@@ -76,10 +78,13 @@ public class ContactHelper extends BaseHelper {
     wd.switchTo().alert().accept();
   }
 
+  private Contacts contactCache = null;
+
   public void create(ContactData contact, boolean creation) {
     clickPageAddNew();
     fillContactForms(contact, creation);
     submitContactCreate();
+    contactCache = null;
     ContactHomePage();
   }
 
@@ -103,6 +108,9 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void ContactHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
     click(By.linkText("home"));
   }
 
@@ -110,10 +118,6 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//input[@type='submit']"));
     //click(By.xpath("//div[@id='content']/form/input[21]"));
   }
-
-
-
-
 
   public Contacts all() {
     Contacts contacts = new Contacts();
@@ -167,33 +171,33 @@ public class ContactHelper extends BaseHelper {
             .withE_mailWork(e_mailWork);
   }
 
-  public void selectGroupForAdd(GroupData group) {
-    new Select (wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+  public void selectGroupInUiForAdd(GroupData group) {
+    new Select (wd.findElement(By.name("group"))).selectByValue(String.valueOf(group.getId()));
   }
 
 
   public void addContactToGroup(ContactData contact, GroupData group) {
     selectContactById(contact.getId());
-    selectGroupForAdd(group);
-    addToGroup();
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+    click(By.xpath("(//input[@name='add'])"));
   }
 
   public void removeContactFromGroup(ContactData contact, GroupData group) {
-    selectGroupInUI(group.getName());
     selectContactById(contact.getId());
-    removeFromGroup(group.getName());
+    click(By.xpath("(//input[@name='remove'])"));
   }
 
-  public void addToGroup() {
+  /*public void addToGroup() {
     click(By.name("add"));
-  }
+  }*/
 
-  public void removeFromGroup(String name) {
+  /*public void removeFromGroup(String name) {
     click(By.name("remove"));
-  }
+  }*/
 
-  public void selectGroupInUI(String name) {
-    new Select(wd.findElement(By.name("group"))).selectByVisibleText(name);
-    //click(By.cssSelector("select[name=\"to_group\"] > option[value='" + id + "']"));
+  public Groups checkGroupForAdding(ContactData contact, Groups groups) {
+    Groups groupsInContact = contact.getGroups();
+    groups.removeAll(groupsInContact);
+    return groups;
   }
 }

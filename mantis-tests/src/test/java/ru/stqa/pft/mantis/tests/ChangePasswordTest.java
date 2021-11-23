@@ -15,7 +15,6 @@ public class ChangePasswordTest extends TestBase {
 
   @BeforeMethod
   public void startMailServer() {
-  //  app.mail().start();
     app.mail().start();
   }
 

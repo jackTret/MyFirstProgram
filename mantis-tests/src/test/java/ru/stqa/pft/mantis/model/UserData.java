@@ -2,10 +2,9 @@ package ru.stqa.pft.mantis.model;
 
 //import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -16,7 +15,9 @@ public class UserData {
   @Column(name = "id")
   private int id = Integer.MAX_VALUE;
 
+  @Transient
   @Column(name = "email")
+  @Type(type="text")
   private String email;
 
   @Column(name = "username")
