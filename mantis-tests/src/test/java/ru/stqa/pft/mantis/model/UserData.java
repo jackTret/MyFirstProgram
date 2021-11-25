@@ -1,11 +1,7 @@
 package ru.stqa.pft.mantis.model;
 
-//import org.hibernate.annotations.Type;
-
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "mantis_user_table")
@@ -15,9 +11,7 @@ public class UserData {
   @Column(name = "id")
   private int id = Integer.MAX_VALUE;
 
-  @Transient
   @Column(name = "email")
-  @Type(type="text")
   private String email;
 
   @Column(name = "username")
@@ -67,20 +61,6 @@ public class UserData {
             "id=" + id +
             ", email='" + email + '\'' +
             ", userName='" + userName + '\'' +
-            ", password='" + password + '\'' +
             '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    UserData userData = (UserData) o;
-    return id == userData.id && Objects.equals(email, userData.email) && Objects.equals(userName, userData.userName) && Objects.equals(password, userData.password);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, email, userName, password);
   }
 }
