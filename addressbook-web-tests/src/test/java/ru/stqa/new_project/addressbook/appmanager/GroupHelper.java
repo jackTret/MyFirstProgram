@@ -44,7 +44,7 @@ public class GroupHelper extends BaseHelper {
     fillGroupForm(group);
     submitGroupCreation();
     groupCashe = null;
-    returnToGroupPage();
+    returnToHomePage();
   }
   public void modify(GroupData group) {
     selectGroupById(group.getId());
@@ -79,5 +79,9 @@ public class GroupHelper extends BaseHelper {
       groupCashe.add(new GroupData().withId(id).withName(name));
     }
     return new Groups(groupCashe);
+  }
+
+  public void returnToHomePage() {
+    click(By.xpath("//a[contains(text(),'home')]"));
   }
 }

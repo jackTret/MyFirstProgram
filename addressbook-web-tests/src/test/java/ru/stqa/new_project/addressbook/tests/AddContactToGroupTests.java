@@ -41,6 +41,7 @@ public class AddContactToGroupTests extends TestBase {
               .withWorkPhone("+74995467743")
               .inGroup(groups.iterator().next());
       app.contact().create(newContact, true);
+      app.contact().returnToHomePage();
     }
   }
 
@@ -62,7 +63,7 @@ public class AddContactToGroupTests extends TestBase {
       app.group().create(newGroup);
       allGroups = app.db().groups();
       contactsForAdding = allContacts;
-      app.goTo().groupPage();
+      //app.goTo().groupPage();
     }
     ContactData addedContactToGroup = contactsForAdding.iterator().next();
     selectedGroup = app.contact().checkGroupForAdding(addedContactToGroup, allGroups).iterator().next();
