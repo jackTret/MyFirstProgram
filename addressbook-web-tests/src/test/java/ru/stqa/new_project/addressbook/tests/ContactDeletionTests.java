@@ -24,11 +24,12 @@ public class ContactDeletionTests extends TestBase{
     if (app.db().contacts().size() == 0) {
       app.contact().ContactHomePage();
       File photo = new File("src/test/resources/kitten_child.png");
-      app.contact().create(new ContactData()
-              .withName("Vladimir")
-              .withMidName("Ivanovich")
-              .withLastname("Zgardanov")
-              .withNick("Zgardan")
+      Groups groups = app.db().groups();
+      ContactData newContact = new ContactData()
+              .withName("Vladimir 1")
+              .withMidName("Ivanovich 1")
+              .withLastname("Zgardanov 1")
+              .withNick("Zgardan 1")
               .withPhoto(photo)
               .withCompanyName("NightClub")
               .withAddress("115666 Moscow, Black st., h.666")
@@ -37,16 +38,18 @@ public class ContactDeletionTests extends TestBase{
               .withE_mailNew("Zgardanych787@gmail.com")
               .withE_mailWork("Zgardanych797@gmail.com")
               .withHomePhone("+74955467743")
-              .withWorkPhone("+74995467743"),true);
+              .withWorkPhone("+74995467743")
+              .inGroup(groups.iterator().next());
+      app.contact().create(newContact, true);
     }
   }
 
 
   @Test (enabled = true)
   public void testContactDeletion () {
-    app.contact().ContactHomePage();
     Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
+    app.contact().ContactHomePage();
     app.contact().delete(deletedContact);
     Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size() - 1);

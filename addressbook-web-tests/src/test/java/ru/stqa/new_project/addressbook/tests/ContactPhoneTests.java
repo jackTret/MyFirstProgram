@@ -18,14 +18,14 @@ public class ContactPhoneTests extends TestBase{
   public void ensurePreconditions(){
     app.contact().ContactHomePage();
    if (app.db().contacts().size() == 0) {
-     Groups groups = app.db().groups();
      app.contact().ContactHomePage();
      File photo = new File("src/test/resources/kitten_child.png");
-     app.contact().create(new ContactData()
-             .withName("Vladimir")
-             .withMidName("Ivanovich")
-             .withLastname("Zgardanov")
-             .withNick("Zgardan")
+     Groups groups = app.db().groups();
+     ContactData newContact = new ContactData()
+             .withName("Vladimir 1")
+             .withMidName("Ivanovich 1")
+             .withLastname("Zgardanov 1")
+             .withNick("Zgardan 1")
              .withPhoto(photo)
              .withCompanyName("NightClub")
              .withAddress("115666 Moscow, Black st., h.666")
@@ -35,9 +35,10 @@ public class ContactPhoneTests extends TestBase{
              .withE_mailWork("Zgardanych797@gmail.com")
              .withHomePhone("+74955467743")
              .withWorkPhone("+74995467743")
-             .inGroup(groups.iterator().next()),true);
+             .inGroup(groups.iterator().next());
+     app.contact().create(newContact, true);
    }
-  }
+ }
 
   @Test
   public void testContactPhones() {

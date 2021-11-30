@@ -85,7 +85,7 @@ public class ContactHelper extends BaseHelper {
     fillContactForms(contact, creation);
     submitContactCreate();
     contactCache = null;
-    ContactHomePage();
+    returnToHomePage();
   }
 
   public void modify(ContactData contact) {
@@ -100,7 +100,7 @@ public class ContactHelper extends BaseHelper {
     selectContactById(contact.getId());
     pushDeleteContact();
     closeAlert();
-    ContactHomePage();
+    returnToHomePage();
   }
 
   public int countContact() {
@@ -112,6 +112,10 @@ public class ContactHelper extends BaseHelper {
       return;
     }
     click(By.linkText("home"));
+  }
+
+  public void returnToHomePage() {
+    click(By.xpath("//a[contains(text(),'home')]"));
   }
 
   public void submitContactCreate() {
@@ -180,11 +184,13 @@ public class ContactHelper extends BaseHelper {
     selectContactById(contact.getId());
     new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
     click(By.xpath("(//input[@name='add'])"));
+    returnToHomePage();
   }
 
   public void removeContactFromGroup(ContactData contact, GroupData group) {
     selectContactById(contact.getId());
     click(By.xpath("(//input[@name='remove'])"));
+    returnToHomePage();
   }
 
   /*public void addToGroup() {
