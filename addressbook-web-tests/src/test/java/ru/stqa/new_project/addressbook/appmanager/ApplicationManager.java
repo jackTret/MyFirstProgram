@@ -1,9 +1,6 @@
 package ru.stqa.new_project.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -46,13 +43,14 @@ public class ApplicationManager {
         wd = new FirefoxDriver();
       } else if (browser.equals(BrowserType.CHROME)) {
         wd = new ChromeDriver();
-      } else if (browser.equals(BrowserType.EDGE)) {
+      } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
       }
     } else {
       DesiredCapabilities capabilities = new DesiredCapabilities();
-      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")),capabilities);
       capabilities.setBrowserName(browser);
+      //capabilities.setPlatform(Platform.fromString(System.getProperty("platform", "win10")));
+      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")),capabilities);
     }
     wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
